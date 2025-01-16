@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-квест: Подготовка к ОГЭ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, p {
+            text-align: center;
+        }
+        .task {
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .input-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Веб-квест: Подготовка к ОГЭ</h1>
+        <p>Вы оказались заперты в комнате. Чтобы выбраться, вам нужно решить задания по различным предметам ОГЭ. Удачи!</p>
+
+        <!-- Первая задача -->
+        <div id="task1" class="task">
+            <h2>Задача 1: Математика</h2>
+            <p>Решите уравнение: <strong>3x - 7 = 11</strong></p>
+            <div class="input-container">
+                <input type="text" id="answer1" placeholder="Ваш ответ">
+                <button class="button" onclick="checkTask1()">Проверить</button>
+            </div>
+            <p id="feedback1" class="hidden"></p>
+        </div>
+
+        <!-- Вторая задача -->
+        <div id="task2" class="task hidden">
+            <h2>Задача 2: Русский язык</h2>
+            <p>Укажите верный вариант написания слова в предложении:</p>
+            <p>"Мы очень (уверены/уверенны) в своей победе."</p>
+            <div class="input-container">
+                <input type="text" id="answer2" placeholder="Ваш ответ">
+                <button class="button" onclick="checkTask2()">Проверить</button>
+            </div>
+            <p id="feedback2" class="hidden"></p>
+        </div>
+
+        <!-- Третья задача -->
+        <div id="task3" class="task hidden">
+            <h2>Задача 3: Обществознание</h2>
+            <p>Какой вид государственного устройства в России?</p>
+            <div class="input-container">
+                <input type="text" id="answer3" placeholder="Ваш ответ">
+                <button class="button" onclick="checkTask3()">Проверить</button>
+            </div>
+            <p id="feedback3" class="hidden"></p>
+        </div>
+
+        <!-- Сообщение об успехе -->
+        <div id="successMessage" class="hidden">
+            <h2 class="success">Поздравляем! Вы справились!</h2>
+            <p>Теперь вы можете выйти из комнаты и продолжать готовиться к ОГЭ. Молодцы!</p>
+        </div>
+    </div>
+
+    <script>
+        function checkTask1() {
+            const answer = document.getElementById("answer1").value.trim();
+            const feedback = document.getElementById("feedback1");
+            if (answer === "6") {
+                feedback.textContent = "Верно! Переходите к следующей задаче.";
+feedback.className = "success";
+                document.getElementById("task2").classList.remove("hidden");
+            } else {
+                feedback.textContent = "Неверно, попробуйте еще раз.";
+                feedback.className = "error";
+            }
+            feedback.classList.remove("hidden");
+        }
+
+        function checkTask2() {
+            const answer = document.getElementById("answer2").value.trim().toLowerCase();
+            const feedback = document.getElementById("feedback2");
+            if (answer === "уверены") {
+                feedback.textContent = "Верно! Переходите к следующей задаче.";
+                feedback.className = "success";
+                document.getElementById("task3").classList.remove("hidden");
+            } else {
+                feedback.textContent = "Неверно, попробуйте еще раз.";
+                feedback.className = "error";
+            }
+            feedback.classList.remove("hidden");
+        }
+
+        function checkTask3() {
+            const answer = document.getElementById("answer3").value.trim().toLowerCase();
+            const feedback = document.getElementById("feedback3");
+            if (answer === "федерация") {
+                feedback.textContent = "Верно! Вы решили все задачи.";
+                feedback.className = "success";
+                document.getElementById("successMessage").classList.remove("hidden");
+            } else {
+                feedback.textContent = "Неверно, попробуйте еще раз.";
+                feedback.className = "error";
+            }
+            feedback.classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
